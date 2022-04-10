@@ -7,6 +7,7 @@ export class AuthService {
   constructor(private prisma: PrismaService) {}
 
   signUp(signupDto: SignupDto) {
+    console.log({ signupDto });
     // return this.prisma.user.create(signupDto);
     return 'signup';
   }
