@@ -10,7 +10,7 @@ export class AuthService {
   async signUp(signupDto: SignupDto) {
     const hashedPassword = await bcrypt.hash(signupDto.password, 10);
     const user = { ...signupDto, password: hashedPassword };
-    return this.prisma.user.create({
+    const savedUser = this.prisma.user.create({
       data: {
         email: user.email,
         password: hashedPassword,
@@ -18,9 +18,17 @@ export class AuthService {
         lastName: user.lastName,
       },
     });
+
+    return savedUser;
   }
 
   login(loginDto: LoginDto) {
-    return 'In login';
+    // const savedUser = this.prisma.user.findUnique({
+    //   where: {
+    //     email: loginDto.email,
+    //   },
+    // });
+    // bcrypt.compare(savedUser, loginDto.password);
+    return 'login';
   }
 }
