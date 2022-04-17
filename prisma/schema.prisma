@@ -18,6 +18,10 @@ model User {
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+
+  cards Card[]
+
+  @@map("users")
 }
 
 model Card {
@@ -26,4 +30,9 @@ model Card {
   expiry Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+
+  userId Int 
+  cardOwner User @relation(fields: [userId], references: [id])
+
+  @@map("cards")
 }

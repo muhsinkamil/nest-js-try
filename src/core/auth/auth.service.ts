@@ -6,7 +6,6 @@ import {
 import { LoginDto, SignupDto } from './dto';
 import { PrismaService } from 'nestjs-prisma';
 import * as bcrypt from 'bcrypt';
-import { isInstance } from 'class-validator';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 @Injectable()
